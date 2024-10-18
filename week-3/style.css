@@ -1,0 +1,28 @@
+library {
+    font-family: Arial, sans-serif;
+}
+
+book {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+author {
+    font-style: italic;
+    font-size: 16px;
+}
+
+year {
+    color: gray;
+}
+
+price {
+    color: green;
+    font-weight: bold;
+}

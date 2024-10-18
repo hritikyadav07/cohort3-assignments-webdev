@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .pokemon-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            width: 150px;
+        }
+        #submitBtn {
+            margin-left: 20px;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgb(193, 14, 193);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitBtn:hover {
+            background-color: #c4007a;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pokemon Card Display</h1>
+        <label for="numCards">Number Of Cards</label>
+        <input type="number" name="num" id="numCards" min ="1" max="100" value="1"/>
+        <button id="submitBtn">Show Pokemon</button>
+        <div class="pokemon-cards"></div>
+    </div>
+</body>
+<script>
+    document.querySelector("#submitBtn").addEventListener('click', fetchPokemons);
+
+    async function fetchPokemons(){
+        const numCards = document.querySelector("#numCards").value;
+        const cardContainer = document.querySelector(".pokemon-cards");
+
+        cardContainer.innerHTML = "";
+        let alreadythere = [];
+        
+        for(let i = 0; i < numCards; i++){
+            const randomNumber = Math.floor(Math.random() * 898) + 1;
+            // console.log(randomNumber);
+            // console.log(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`);
+            if(alreadythere.includes(randomNumber)) {
+                i--;
+                continue;
+            }
+            alreadythere.push(randomNumber);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`);
+            const pokemon = await response.json();
+            const pokemonCard = document.createElement('div');
+            pokemonCard.classList.add('card');
+            pokemonCard.innerHTML = `
+                    <h2>${pokemon.name}</h2>
+                    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+                    <p>Height: ${pokemon.height}</p>
+                    <p>Weight: ${pokemon.weight}</p>
+                    <p>${pokemon.types[0].type.name}</p>
+                `;
+                cardContainer.appendChild(pokemonCard);
+        }
+    }
+</script>
+</html>

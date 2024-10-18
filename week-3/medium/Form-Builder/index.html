@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Builder</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Geneva, Verdana, sans-serif;
+        }
+        .container{
+            /* background-color: red; */
+            height: auto;
+            display: flex;
+            gap: 7px;
+        }
+        .creatorContainer{
+            width: 45vw;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            padding: 25px;
+            padding-right: 0px;
+            gap: 5px;
+        }
+        .formContainer{
+            width: 45vw;
+            border: 2px solid black;
+        }
+        #type{
+            width: 43.5vw;
+            height: 40px;
+        }
+        input{
+            width: 43vw;
+            height: 35px;
+        }
+        label{
+            /* font-size: 16px; */
+            font-weight: 800;
+        }
+        button{
+            width: 43.5vw;
+            height: 40px;
+            margin-top: 15px;
+            padding: 0px 15px ;
+            background-color: rgb(59, 14, 193);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .formContainer{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="creatorContainer">
+            <h1>Form Builder</h1>
+            <label for="type">Select Field Type</label>
+            <select name="type" id="type">
+                <option value="text">Text Input</option>
+                <option value="number">Number Input</option>
+                <option value="email">Email Input</option>
+                <option value="password">Password Input</option>
+                <!-- <option value="radio">Radio</option> -->
+                <option value="textarea">textarea</option>
+                <option value="file">File Input</option>
+                <option value="date">Date</option>
+                <option value="checkbox">Checkbox</option>
+                <option value="image">Image</option>
+                <option value="button">button</option>
+            </select>
+            <br>
+            <label for="field">Field Label</label>
+            <input type="text" name="field" id="field">
+            <button>Submit</button>
+        </div>
+        <div class="formContainer"></div>
+    </div>
+</body>
+<script>
+    document.querySelector("button").addEventListener('click', loadElement);
+    function loadElement(){
+        const type = document.querySelector("#type").value;
+        const field = document.querySelector("#field").value;
+        const formContainer = document.querySelector(".formContainer");
+        if(type == "button"){
+            let button = document.createElement("button");
+            button.innerHTML = field;
+            formContainer.appendChild(button);
+        } else {
+            let label = document.createElement("label");
+            label.textContent = field;
+            let element = document.createElement("input")
+            element.type = type;
+            formContainer.appendChild(label);
+            formContainer.appendChild(element);
+        }
+    }
+</script>
+</html>

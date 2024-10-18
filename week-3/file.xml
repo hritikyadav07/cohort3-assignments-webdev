@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<!DOCTYPE employees [
+  <!ELEMENT employees (employee+)>
+  <!ELEMENT employee (emp_id, emp_name, emp_designation, emp_contact, emp_salary, emp_address)>
+  <!ELEMENT emp_id (#PCDATA)>
+  <!ELEMENT emp_name (#PCDATA)>
+  <!ELEMENT emp_designation (#PCDATA)>
+  <!ELEMENT emp_contact (#PCDATA)>
+  <!ELEMENT emp_salary (#PCDATA)>
+  <!ELEMENT emp_address (house_no, street, locality, city, state)>
+  <!ELEMENT house_no (#PCDATA)>
+  <!ELEMENT street (#PCDATA)>
+  <!ELEMENT locality (#PCDATA)>
+  <!ELEMENT city (#PCDATA)>
+  <!ELEMENT state (#PCDATA)>
+]>
+
+<employees>
+  <employee emp_id="101">
+    <emp_name>Rohit</emp_name>
+    <emp_designation>Manager</emp_designation>
+    <emp_contact>rohit@example.com</emp_contact>
+    <emp_salary>70000</emp_salary>
+    <emp_address>
+      <house_no>1001</house_no>
+      <street>1</street>
+      <locality>Alfred city</locality>
+      <city>Bengaluru</city>
+      <state>Karnataka</state>
+    </emp_address>
+  </employee>
+  
+  <employee emp_id="102">
+    <emp_name>Shikhar</emp_name>
+    <emp_designation>Assistant Manager</emp_designation>
+    <emp_contact>shikhar@example.com</emp_contact>
+    <emp_salary>65000</emp_salary>
+        <emp_address>
+    <house_no>1001</house_no>
+    <street>1</street>
+    <locality>Alfred city</locality>
+    <city>Benguluru</city>
+    <state>Karnataka</state>
+    </emp_address>
+  </employee>
+  
+  <employee emp_id="103">
+    <emp_name>Virat</emp_name>
+    <emp_designation>Team Lead</emp_designation>
+    <emp_contact>virat@example.com</emp_contact>
+    <emp_salary>85000</emp_salary>
+    <emp_address>
+    <house_no>1001</house_no>
+    <street>1</street>
+    <locality>Alfred city</locality>
+    <city>Benguluru</city>
+    <state>Karnataka</state>
+    </emp_address>    
+    
+  </employee>
+  
+  <employee emp_id="104">
+    <emp_name>Suresh</emp_name>
+    <emp_designation>Senior Developer</emp_designation>
+    <emp_contact>suresh@example.com</emp_contact>
+    <emp_salary>60000</emp_salary>
+    <emp_address>
+    <house_no>1001</house_no>
+    <street>1</street>
+    <locality>Alfred city</locality>
+    <city>Benguluru</city>
+    <state>Karnataka</state>
+    </emp_address>
+  </employee>
+  
+  <employee emp_id="105">
+    <emp_name>Yuvraj</emp_name>
+    <emp_designation>Developer</emp_designation>
+    <emp_contact>yuvraj@example.com</emp_contact>
+    <emp_salary>75000</emp_salary>
+    <emp_address>
+    <house_no>1001</house_no>
+    <street>1</street>
+    <locality>Alfred city</locality>
+    <city>Benguluru</city>
+    <state>Karnataka</state>
+    </emp_address>
+  </employee>
+</employees>

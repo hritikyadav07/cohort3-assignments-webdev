@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title>BG- Changer</title>
+</head>
+<style>
+    .container{
+        /* width: 95vh; */
+        height:95vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: end;
+    }
+    .main{
+        margin: 50px 200px;
+        padding: 7px;
+        width: 100%;
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        gap: 35px;
+        border-radius: 20px;
+        box-shadow: 10px 10px 10px rgb(226, 216, 216);
+    }
+    button{
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+    }
+    .red{
+        background-color: red;
+    }
+    .yellow{
+        background-color: yellow;
+    }
+    .black{
+        background-color: black;
+        color: whitesmoke;
+    }
+    .purple{
+        background-color: purple;
+    }
+    .green{
+        background-color: green;
+    }
+    .blue{
+        background-color: blue;
+    }
+    .default{
+        background-color: pink;
+    }
+</style>
+<body >
+    <div class="container">
+        <div class="main">
+            <button onclick="changeColor('red')" class="red">Red</button>
+            <button onclick="changeColor('yellow')" class="yellow">Yellow</button>
+            <button onclick="changeColor('black')" class="black">Black</button>
+            <button onclick="changeColor('purple')" class="purple">Purple</button>
+            <button onclick="changeColor('green')" class="green">Green</button>
+            <button onclick="changeColor('blue')" class="blue">Blue</button>
+            <button onclick="changeColor()" class="default">Default</button>
+        </div>
+    </div>
+</body>
+<script>
+    function changeColor( color= 'white') {
+        document.body.style.backgroundColor = color;
+    }
+</script>
+</html>

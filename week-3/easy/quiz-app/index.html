@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <title>Quiz</title>
+    
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 50px;
+            height: 97vh;
+            background-color: antiquewhite;
+        }
+        .container{
+            height: 400px;
+            background-color: white;
+            width: 400px;   
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px white;
+        }
+        #submit{
+            height: 40px;
+            width: 100%;
+            border-radius: 0 0 20px 20px;
+            border: none;
+            background-color:rgb(193, 14, 193);
+            color: aliceblue;
+            font-size: 16px;
+            
+        }
+        #submit:hover{
+            background-color: #c4007a;
+            /* background-color: black; */
+
+        }
+        .quiz{
+            margin-top: 50px;
+            padding: 50px;
+            height: 210px;
+            /* text-align: center; */
+            /* display: flex; */
+            /* flex-direction: column; */
+        }
+        .question{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 800;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        input{
+            margin: 7px;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz">
+            <div class="question">Question?</div><br>
+            <input type="radio" name="answer" value="a" id="a">Option one</input><br>
+            <input type="radio" name="answer" value="b" id="b">Option one</input><br>
+            <input type="radio" name="answer" value="c" id="c">Option one</input><br>
+            <input type="radio" name="answer" value="d" id="d">Option one</input>
+        </div>
+        <button id="submit" onclick="checkAnswer()">Submit</button>
+    </div>
+</body>
+<script src="data.js"></script>
+<script>
+    let correct = 0;
+    let i = 0;
+    function updateQuestion(){
+        if(i >= quizData.length) {
+            let container = document.querySelector('.container') 
+            container.setAttribute("class",'question');
+            container.innerHTML = `<h1>Quiz Completed!</h1><h2>You answered ${correct} questions correctly.</h2>`;  
+            return;
+        } else {
+            document.querySelector('.question').innerText = quizData[i].question;
+            document.querySelector('#a').nextSibling.nodeValue = quizData[i].a;
+            document.querySelector('#b').nextSibling.nodeValue = quizData[i].b;
+            document.querySelector('#c').nextSibling.nodeValue = quizData[i].c;
+            document.querySelector('#d').nextSibling.nodeValue = quizData[i].d;
+            i++;
+        }
+    }
+    function checkAnswer(){
+        let userAnswer = document.querySelector(`input[name="answer"][value="${quizData[i-1].correct}"]`).checked;
+        console.log(userAnswer);
+        if(userAnswer) {
+            correct++;
+        }
+        updateQuestion();
+    }
+    updateQuestion();
+    
+</script>
+</html>
